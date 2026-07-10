@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import EnvelopeScreen from './components/EnvelopeScreen';
 import Hero from './components/Hero';
+import PersonalNote from './components/PersonalNote';
 import SaveTheDate from './components/SaveTheDate';
 import Ceremony from './components/Ceremony';
 import Reception from './components/Reception';
@@ -33,6 +34,7 @@ export default function App() {
           <div ref={heroRef}>
             <Hero />
           </div>
+          <PersonalNote />
           <SaveTheDate />
           <Ceremony />
           <Reception />

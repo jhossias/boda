@@ -12,6 +12,7 @@ export default function ScrollReveal({
   children,
   delay = 0,
   direction = 'up',
+  duration = 0.8,
   className = '',
   as = 'div',
 }) {
@@ -25,7 +26,7 @@ export default function ScrollReveal({
       className={className}
       initial={variant.hidden}
       animate={inView ? variant.visible : variant.hidden}
-      transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94], delay }}
+      transition={{ duration, ease: [0.25, 0.46, 0.45, 0.94], delay }}
     >
       {children}
     </Component>

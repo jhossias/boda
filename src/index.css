@@ -254,12 +254,6 @@ ul { list-style: none; }
   clip-path: polygon(50% 0%, 75% 8%, 92% 28%, 98% 50%, 90% 72%, 72% 92%, 50% 100%, 28% 92%, 8% 74%, 2% 50%, 10% 26%, 28% 6%);
 }
 
-.envelope__seal-text {
-  font-family: var(--font-display);
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--dark);
-}
 
 .envelope-hint {
   font-family: var(--font-body);
@@ -332,7 +326,7 @@ ul { list-style: none; }
   width: 100px;
   margin: 32px auto 0;
   mix-blend-mode: multiply;
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 /* =========================================================
@@ -351,6 +345,33 @@ ul { list-style: none; }
   padding: 70px 20px;
   display: flex;
   justify-content: center;
+}
+
+/* =========================================================
+   TEXTO PERSONAL
+   ========================================================= */
+.personal-note {
+  background: var(--cream);
+  padding: 80px 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.personal-note__inner {
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.personal-note__text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.8;
+  color: var(--brown);
+  text-align: center;
 }
 
 /* Save the date */

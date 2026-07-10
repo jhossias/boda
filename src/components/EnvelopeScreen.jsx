@@ -110,7 +110,11 @@ function Envelope({ opening, onOpen }) {
               exit={{ opacity: 0, scale: 0.4 }}
               transition={{ duration: 0.4 }}
             >
-              <span className="envelope__seal-text">JD</span>
+              <img
+                src="/logo.jpg"
+                alt="Monograma JD"
+                style={{ width: 44, mixBlendMode: 'multiply', opacity: 0.85 }}
+              />
             </motion.div>
           )}
         </AnimatePresence>
@@ -162,7 +166,12 @@ export default function EnvelopeScreen({ onOpen }) {
             <motion.img
               src="/logo.jpg"
               alt="Monograma JD"
-              style={{ width: 130, mixBlendMode: 'screen' }}
+              style={{
+                width: 130,
+                display: 'block',
+                margin: '0 auto',
+                mixBlendMode: 'screen',
+              }}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 2, ease: 'easeOut' }}
