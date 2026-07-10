@@ -14,6 +14,22 @@ if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
 }
 
 /* =========================================================
+   Animación de escritura letra por letra — nombres del hero
+   ========================================================= */
+const coverNames = document.getElementById('coverNames');
+if (coverNames) {
+  const text = coverNames.dataset.text || coverNames.textContent;
+  coverNames.innerHTML = '';
+  [...text].forEach((ch, i) => {
+    const span = document.createElement('span');
+    span.className = 'letter' + (ch === '&' ? ' amp' : '');
+    span.textContent = ch;
+    span.style.setProperty('--i', i);
+    coverNames.appendChild(span);
+  });
+}
+
+/* =========================================================
    Scroll reveal — IntersectionObserver
    ========================================================= */
 const revealObserver = new IntersectionObserver(
@@ -47,9 +63,34 @@ if (timelineItems.length) {
         }
       });
     },
-    { threshold: 0.2 }
+    { threshold: 0.15 }
   );
   timelineObserver.observe(document.querySelector('.timeline'));
+}
+
+/* =========================================================
+   Parallax sutil en separadores decorativos
+   ========================================================= */
+const parallaxEls = document.querySelectorAll('.parallax');
+if (parallaxEls.length) {
+  let ticking = false;
+  function updateParallax() {
+    const viewportCenter = window.innerHeight / 2;
+    parallaxEls.forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      const elCenter = rect.top + rect.height / 2;
+      const offset = (viewportCenter - elCenter) * 0.04;
+      el.style.transform = `translateY(${offset.toFixed(2)}px)`;
+    });
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  });
+  updateParallax();
 }
 
 /* =========================================================
@@ -93,6 +134,7 @@ const playerPrev = document.getElementById('playerPrev');
 const playerNext = document.getElementById('playerNext');
 const playerBar = document.getElementById('playerBar');
 const playerBarFill = document.getElementById('playerBarFill');
+const playerBarThumb = document.getElementById('playerBarThumb');
 
 playerToggle.addEventListener('click', () => {
   if (audio.paused) {
@@ -100,6 +142,16 @@ playerToggle.addEventListener('click', () => {
   } else {
     audio.pause();
   }
+});
+
+audio.addEventListener('play', () => {
+  playerToggle.classList.add('is-playing');
+  player.classList.add('is-playing');
+});
+
+audio.addEventListener('pause', () => {
+  playerToggle.classList.remove('is-playing');
+  player.classList.remove('is-playing');
 });
 
 playerPrev.addEventListener('click', () => {
@@ -114,6 +166,7 @@ audio.addEventListener('timeupdate', () => {
   if (!audio.duration) return;
   const pct = (audio.currentTime / audio.duration) * 100;
   playerBarFill.style.width = `${pct}%`;
+  playerBarThumb.style.left = `${pct}%`;
 });
 
 playerBar.addEventListener('click', (e) => {
@@ -156,22 +209,15 @@ document.getElementById('addToCalendar').addEventListener('click', () => {
 });
 
 /* =========================================================
-   Countdown con animación flip
+   Countdown con fade elegante
    ========================================================= */
 const WEDDING_DATE = new Date('2026-10-03T10:30:00-05:00').getTime();
 
-const flipValues = {
-  days: document.querySelector('[data-unit="days"] .flip-value'),
-  hours: document.querySelector('[data-unit="hours"] .flip-value'),
-  minutes: document.querySelector('[data-unit="minutes"] .flip-value'),
-  seconds: document.querySelector('[data-unit="seconds"] .flip-value'),
-};
-
-const flipCards = {
-  days: document.querySelector('[data-unit="days"]'),
-  hours: document.querySelector('[data-unit="hours"]'),
-  minutes: document.querySelector('[data-unit="minutes"]'),
-  seconds: document.querySelector('[data-unit="seconds"]'),
+const cdNums = {
+  days: document.querySelector('.cd-num[data-unit="days"]'),
+  hours: document.querySelector('.cd-num[data-unit="hours"]'),
+  minutes: document.querySelector('.cd-num[data-unit="minutes"]'),
+  seconds: document.querySelector('.cd-num[data-unit="seconds"]'),
 };
 
 let lastCountdown = { days: null, hours: null, minutes: null, seconds: null };
@@ -190,11 +236,11 @@ function updateCountdown() {
   Object.keys(next).forEach((unit) => {
     const padded = String(next[unit]).padStart(2, '0');
     if (lastCountdown[unit] !== next[unit]) {
-      flipValues[unit].textContent = padded;
-      flipCards[unit].classList.remove('is-flipping');
-      // reflow para reiniciar la animación
-      void flipCards[unit].offsetWidth;
-      flipCards[unit].classList.add('is-flipping');
+      const el = cdNums[unit];
+      el.textContent = padded;
+      el.classList.remove('is-updating');
+      void el.offsetWidth;
+      el.classList.add('is-updating');
       lastCountdown[unit] = next[unit];
     }
   });
