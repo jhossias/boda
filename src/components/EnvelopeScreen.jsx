@@ -173,7 +173,7 @@ export default function EnvelopeScreen({ onOpen }) {
               src="/logo.png"
               alt="Monograma JD"
               style={{
-                width: 130,
+                width: 180,
                 display: 'block',
                 margin: '0 auto',
                 mixBlendMode: 'screen',

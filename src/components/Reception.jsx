@@ -5,10 +5,15 @@ export default function Reception() {
   return (
     <section className="reception">
       <motion.img
-        src="/pareja.jpg"
+        src="/pareja.png"
         alt=""
         aria-hidden="true"
-        className="reception__img"
+        style={{
+          width: '200px',
+          display: 'block',
+          margin: '0 auto 24px',
+          mixBlendMode: 'multiply',
+        }}
         initial={{ opacity: 0, scale: 0.8 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, amount: 0.3 }}

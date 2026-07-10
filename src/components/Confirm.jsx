@@ -104,24 +104,14 @@ export default function Confirm() {
                   </label>
                 </div>
 
-                <div className="confirm__buttons">
-                  <motion.button
-                    type="submit"
-                    className="btn btn-bride"
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                  >
-                    Confirmar a la Novia
-                  </motion.button>
-                  <motion.button
-                    type="submit"
-                    className="btn btn-groom"
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                  >
-                    Confirmar al Novio
-                  </motion.button>
-                </div>
+                <motion.button
+                  type="submit"
+                  className="confirm__submit"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                >
+                  Confirmar Asistencia
+                </motion.button>
               </motion.form>
             ) : (
               <motion.p

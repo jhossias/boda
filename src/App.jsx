@@ -7,6 +7,8 @@ import Ceremony from './components/Ceremony';
 import Reception from './components/Reception';
 import Itinerary from './components/Itinerary';
 import DressCode from './components/DressCode';
+import ArriveOnTime from './components/ArriveOnTime';
+import Gifts from './components/Gifts';
 import Countdown from './components/Countdown';
 import Confirm from './components/Confirm';
 import Footer from './components/Footer';
@@ -40,6 +42,8 @@ export default function App() {
           <Reception />
           <Itinerary />
           <DressCode />
+          <ArriveOnTime />
+          <Gifts />
           <Countdown />
           <Confirm />
           <Footer />
