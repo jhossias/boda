@@ -1,0 +1,983 @@
+/* =========================================================
+   Domenica & Jhossias — 03.10.2026
+   Invitación de boda — estilos
+   ========================================================= */
+
+:root {
+  --color-bg: #FAF7F2;
+  --color-primary: #8B6E47;
+  --color-primary-dark: #6B5235;
+  --color-accent: #D4B896;
+  --color-ink: #2C2C2C;
+  --color-cream: #FAF7F2;
+  --color-blush: #F0E8DF;
+  --color-white: #FFFFFF;
+
+  --font-display: "Cormorant Garamond", serif;
+  --font-body: "Montserrat", sans-serif;
+
+  --wrap-max: 680px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #EDE7DD;
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  cursor: default;
+}
+
+#app {
+  position: relative;
+  max-width: var(--wrap-max);
+  margin: 0 auto;
+  background: var(--color-bg);
+  overflow: hidden;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.08);
+  min-height: 100vh;
+}
+
+/* subtle linen/paper noise texture */
+#app::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  max-width: var(--wrap-max);
+  margin: 0 auto;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.55  0 0 0 0 0.47  0 0 0 0 0.39  0 0 0 0.03 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+
+img, svg { display: block; max-width: 100%; }
+
+a { color: inherit; text-decoration: none; }
+
+button { font-family: inherit; border: none; background: none; cursor: pointer; }
+
+/* =========================================================
+   Cursor personalizado (solo desktop)
+   ========================================================= */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-primary);
+  background: rgba(139, 110, 71, 0.12);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s var(--ease), height 0.2s var(--ease), background 0.2s var(--ease), opacity 0.3s ease;
+  opacity: 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cursor-dot.is-visible { opacity: 1; }
+  .cursor-dot.is-active {
+    width: 34px;
+    height: 34px;
+    background: rgba(139, 110, 71, 0.22);
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot { display: none; }
+}
+
+/* =========================================================
+   Reveal on scroll
+   ========================================================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================================
+   Secciones genéricas
+   ========================================================= */
+.section {
+  position: relative;
+  z-index: 1;
+  padding: 5rem 1.75rem;
+  text-align: center;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+.eyebrow--light { color: var(--color-accent); }
+
+.divider {
+  width: 46px;
+  height: 1px;
+  background: var(--color-accent);
+  margin: 1.5rem auto;
+}
+
+.amp {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--color-primary);
+}
+
+/* =========================================================
+   SECCIÓN 1 — Portada / Sobre
+   ========================================================= */
+.cover {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  padding: 3rem 1.75rem;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.cover.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  pointer-events: none;
+}
+
+.cover-content {
+  text-align: center;
+  width: 100%;
+}
+
+.monogram {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.monogram-img {
+  max-width: 120px;
+  width: 90px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.monogram--intro {
+  opacity: 0;
+  animation: fadeInMonogram 1.4s var(--ease) 0.2s forwards;
+}
+
+@keyframes fadeInMonogram {
+  from { opacity: 0; transform: translateY(-12px) scale(0.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.cover-names {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(2.1rem, 9vw, 3.1rem);
+  color: var(--color-ink);
+  margin-bottom: 0.6rem;
+}
+
+.cover-sub {
+  font-family: var(--font-body);
+  font-weight: 300;
+  letter-spacing: 0.14em;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.cover-note {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--color-ink);
+  margin-bottom: 2.5rem;
+}
+
+/* Sobre 3D en CSS puro */
+.envelope {
+  width: 220px;
+  height: 145px;
+  margin: 0 auto;
+  position: relative;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.envelope-shadow {
+  position: absolute;
+  bottom: -14px;
+  left: 10%;
+  width: 80%;
+  height: 18px;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.18) 0%, transparent 75%);
+  transition: transform 0.4s var(--ease);
+}
+
+.envelope-body {
+  position: absolute;
+  inset: 0;
+  border-radius: 4px;
+}
+
+.envelope-back {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #FBF8F3, #F1E9DC);
+  border: 1px solid var(--color-primary);
+  border-radius: 4px;
+  box-shadow: 0 12px 30px rgba(107, 82, 53, 0.18);
+}
+
+.envelope-back::before,
+.envelope-back::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  border-bottom: 72px solid transparent;
+}
+
+.envelope-back::before {
+  left: 0;
+  border-right: 110px solid rgba(139, 110, 71, 0.09);
+}
+
+.envelope-back::after {
+  right: 0;
+  border-left: 110px solid rgba(139, 110, 71, 0.09);
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  border-left: 110px solid transparent;
+  border-right: 110px solid transparent;
+  border-top: 78px solid #EFE6D6;
+  filter: drop-shadow(0 6px 8px rgba(107, 82, 53, 0.18));
+  transform-origin: top center;
+  transform: rotateX(0deg);
+  transition: transform 0.7s var(--ease);
+  transform-style: preserve-3d;
+}
+
+.seal {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 3px 8px rgba(107, 82, 53, 0.4);
+  z-index: 3;
+  transition: opacity 0.3s ease, transform 0.4s ease;
+}
+
+.seal .monogram-img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+}
+
+.envelope.is-open .envelope-flap {
+  transform: rotateX(180deg);
+}
+
+.envelope.is-open .seal {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.4);
+}
+
+.envelope.is-open .envelope-shadow {
+  transform: scale(1.15);
+}
+
+.envelope-hint {
+  margin-top: 1.5rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--color-primary);
+  animation: blinkHint 2.4s ease-in-out infinite;
+}
+
+@keyframes blinkHint {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* =========================================================
+   Contenido principal
+   ========================================================= */
+.invitation {
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(30px) scale(0.98);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+}
+
+.invitation.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* =========================================================
+   SECCIÓN 2 — Padres / Novios
+   ========================================================= */
+.parents-cols {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--color-ink);
+  margin-bottom: 2.5rem;
+}
+
+.parents-col p { line-height: 1.4; }
+
+.sprig {
+  color: var(--color-primary);
+  display: flex;
+  justify-content: center;
+  margin: 1rem auto 2rem;
+}
+
+.couple-names {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(2rem, 8vw, 2.6rem);
+  line-height: 1.3;
+  color: var(--color-ink);
+  margin-bottom: 1rem;
+}
+
+.amp--big { font-size: 1.1em; margin: 0 0.15em; }
+
+.couple-date {
+  font-family: var(--font-body);
+  letter-spacing: 0.2em;
+  color: var(--color-primary);
+  font-size: 0.95rem;
+}
+
+/* =========================================================
+   SECCIÓN 3 — Guardar Fecha
+   ========================================================= */
+.card {
+  background: var(--color-white);
+  border-radius: 18px;
+  padding: 2.75rem 1.75rem;
+  box-shadow: 0 14px 40px rgba(107, 82, 53, 0.12);
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.card-icon {
+  color: var(--color-primary);
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.card h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.muted {
+  color: #7A7A7A;
+  font-size: 0.88rem;
+  margin-bottom: 1.75rem;
+}
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.9rem 1.9rem;
+  border-radius: 999px;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), background 0.3s ease, color 0.3s ease;
+}
+
+.btn--primary {
+  background: var(--color-primary);
+  color: var(--color-cream);
+  box-shadow: 0 10px 24px rgba(139, 110, 71, 0.3);
+}
+
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(139, 110, 71, 0.38);
+}
+
+.btn--outline {
+  background: transparent;
+  border: 1px solid var(--color-cream);
+  color: var(--color-cream);
+}
+
+.btn--outline:hover {
+  background: var(--color-cream);
+  color: var(--color-primary-dark);
+}
+
+/* =========================================================
+   SECCIÓN 4 — Ceremonia
+   ========================================================= */
+.ceremony {
+  background: var(--color-primary-dark);
+  color: var(--color-cream);
+}
+
+.church-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.church-img {
+  max-width: 220px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border: none;
+}
+
+.ceremony-date {
+  letter-spacing: 0.16em;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 1.25rem;
+}
+
+.ceremony-place {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.ceremony-address {
+  font-size: 0.9rem;
+  opacity: 0.85;
+  margin-bottom: 0.4rem;
+}
+
+.ceremony-time {
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 2rem;
+  color: var(--color-accent);
+}
+
+/* =========================================================
+   SECCIÓN 5 — Recepción
+   ========================================================= */
+.reception {
+  background: var(--color-blush);
+}
+
+.couple-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.couple-img {
+  max-width: 200px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border: none;
+  mix-blend-mode: multiply;
+}
+
+.reception-place {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 2.4rem;
+  color: var(--color-primary-dark);
+  margin-bottom: 0.6rem;
+}
+
+.reception-address {
+  font-size: 0.9rem;
+  color: #6a6a6a;
+  margin-bottom: 0.3rem;
+}
+
+.reception-time {
+  letter-spacing: 0.08em;
+  color: var(--color-primary);
+  margin-bottom: 2rem;
+}
+
+/* =========================================================
+   SECCIÓN 6 — Itinerario
+   ========================================================= */
+.card--wide {
+  max-width: 560px;
+  padding: 2.5rem 1.5rem;
+}
+
+.itinerary h2 { margin-bottom: 2rem; }
+
+.timeline {
+  list-style: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.9rem;
+  text-align: left;
+  padding-left: 2.4rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 6px;
+  bottom: 6px;
+  width: 1.5px;
+  background: var(--color-accent);
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+
+.timeline-item.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.timeline-icon {
+  position: absolute;
+  left: -2.4rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-cream);
+  border: 1.5px solid var(--color-accent);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.timeline-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.timeline-time {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--color-primary);
+  text-transform: uppercase;
+}
+
+.timeline-label {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--color-ink);
+}
+
+@media (min-width: 640px) {
+  .timeline {
+    flex-direction: row;
+    padding-left: 0;
+    padding-top: 2.4rem;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  .timeline::before {
+    left: 0;
+    right: 0;
+    top: 18px;
+    bottom: auto;
+    width: auto;
+    height: 1.5px;
+  }
+  .timeline-item {
+    flex-direction: column;
+    text-align: center;
+    flex: 1;
+    transform: translateY(-16px);
+  }
+  .timeline-item.is-visible { transform: translateY(0); }
+  .timeline-icon {
+    position: static;
+    margin-bottom: 0.6rem;
+  }
+  .timeline-text { align-items: center; }
+}
+
+/* =========================================================
+   SECCIÓN 7 — Dress Code
+   ========================================================= */
+.dresscode {
+  background-image:
+    linear-gradient(180deg, rgba(250,247,242,0.94), rgba(250,247,242,0.94)),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M0 0h40v1H0zM0 10h40v1H0zM0 20h40v1H0zM0 30h40v1H0z' fill='%238B6E47' fill-opacity='0.04'/%3E%3C/svg%3E");
+}
+
+.dresscode-sub {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--color-primary);
+  margin-bottom: 2rem;
+}
+
+.dresscode-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  color: var(--color-primary);
+  margin-bottom: 2rem;
+}
+
+.dresscode-text {
+  max-width: 460px;
+  margin: 0 auto;
+  color: #4a4a4a;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+/* =========================================================
+   SECCIÓN 8 — Countdown
+   ========================================================= */
+.countdown {
+  background: var(--color-primary-dark);
+  color: var(--color-cream);
+}
+
+.flip-row {
+  display: flex;
+  justify-content: center;
+  gap: 0.7rem;
+  margin: 1rem 0 2.5rem;
+}
+
+.flip-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.flip-card {
+  width: 62px;
+  height: 68px;
+  background: linear-gradient(180deg, #7d6142, #5f4a2f);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.flip-card::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 50%;
+  height: 1px;
+  background: rgba(0,0,0,0.3);
+}
+
+.flip-value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.9rem;
+  color: var(--color-cream);
+  transition: opacity 0.15s ease;
+}
+
+.flip-card.is-flipping .flip-value {
+  animation: flipNum 0.4s ease;
+}
+
+@keyframes flipNum {
+  0% { opacity: 1; transform: translateY(0); }
+  45% { opacity: 0; transform: translateY(-10px); }
+  55% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.flip-caption {
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.monogram--small { justify-content: center; }
+.monogram--small .monogram-img { width: 56px; }
+
+.monogram--footer { justify-content: center; margin-bottom: 0.75rem; }
+.monogram--footer .monogram-img { width: 64px; }
+
+/* =========================================================
+   SECCIÓN 9 — RSVP
+   ========================================================= */
+.rsvp-sub {
+  max-width: 420px;
+  margin: 0 auto 2.5rem;
+  color: #5a5a5a;
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.rsvp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+  max-width: 380px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.field span {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.field input,
+.field select {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--color-accent);
+  border-radius: 8px;
+  background: var(--color-white);
+  color: var(--color-ink);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.field input:focus,
+.field select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(139, 110, 71, 0.15);
+}
+
+.rsvp-form .btn { margin-top: 0.5rem; }
+
+.rsvp-success {
+  max-width: 380px;
+  margin: 2rem auto 0;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: var(--color-blush);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--color-primary-dark);
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+}
+
+.rsvp-success.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* =========================================================
+   Footer
+   ========================================================= */
+.footer {
+  background: #4A3823;
+  color: var(--color-cream);
+  text-align: center;
+  padding: 3.5rem 1.75rem 8rem;
+}
+
+.footer-names {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+}
+
+.footer-note {
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+}
+
+/* =========================================================
+   Reproductor de música
+   ========================================================= */
+.player {
+  position: fixed;
+  left: 50%;
+  bottom: 1.5rem;
+  transform: translateX(-50%) translateY(20px);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(107, 82, 53, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 999px;
+  padding: 0.6rem 1rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  z-index: 500;
+  opacity: 0;
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+  max-width: calc(100% - 2rem);
+}
+
+.player.is-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.player-btn {
+  color: var(--color-cream);
+  font-size: 1rem;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.25s ease;
+}
+
+.player-btn:hover { background: rgba(255,255,255,0.12); }
+
+.player-btn--main { font-size: 1.2rem; }
+
+.player-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 130px;
+}
+
+.player-title {
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  color: var(--color-cream);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.player-bar {
+  width: 100%;
+  height: 4px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 999px;
+  cursor: pointer;
+  position: relative;
+}
+
+.player-bar-fill {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 0%;
+  background: var(--color-accent);
+  border-radius: 999px;
+}
+
+/* =========================================================
+   Confetti
+   ========================================================= */
+.confetti-piece {
+  position: fixed;
+  top: -10px;
+  width: 8px;
+  height: 14px;
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: 1000;
+  border-radius: 2px;
+}
+
+/* =========================================================
+   Responsive tweaks
+   ========================================================= */
+@media (max-width: 380px) {
+  .flip-card { width: 54px; height: 60px; }
+  .flip-value { font-size: 1.6rem; }
+}

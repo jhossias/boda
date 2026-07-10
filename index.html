@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Domenica & Jhossias • 03.10.2026</title>
+    <meta name="description" content="Domenica y Jhossias · Guayaquil · 03 de octubre del 2026 · Hemos reservado un cupo para ti." />
+
+    <!-- Open Graph / WhatsApp -->
+    <meta property="og:title" content="Domenica & Jhossias • 03.10.2026" />
+    <meta property="og:description" content="Domenica y Jhossias · Guayaquil · 03 de octubre del 2026 · Hemos reservado un cupo para ti." />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:url" content="https://domenicayjhossias.com/" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Domenica & Jhossias • 03.10.2026" />
+    <meta name="twitter:description" content="Domenica y Jhossias · Guayaquil · 03 de octubre del 2026 · Hemos reservado un cupo para ti." />
+    <meta name="twitter:image" content="/og-image.jpg" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+
+    <div id="app">
+
+      <!-- ============ SECCIÓN 1: PORTADA / SOBRE ============ -->
+      <section class="cover" id="cover">
+        <div class="cover-content">
+          <div class="monogram monogram--intro" aria-hidden="true">
+            <img class="monogram-img" src="/logo.png" alt="Monograma JD" />
+          </div>
+          <h1 class="cover-names">Domenica <span class="amp">&amp;</span> Jhossias</h1>
+          <p class="cover-sub">Guayaquil · 03 de octubre del 2026</p>
+          <div class="divider" aria-hidden="true"></div>
+          <p class="cover-note">Hemos reservado un cupo para ti</p>
+
+          <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Abrir invitación">
+            <div class="envelope-shadow"></div>
+            <div class="envelope-body">
+              <div class="envelope-back"></div>
+              <div class="seal" aria-hidden="true">
+                <img class="monogram-img" src="/logo.png" alt="" />
+              </div>
+              <div class="envelope-flap"></div>
+            </div>
+          </div>
+          <p class="envelope-hint">Toca el sobre para abrir tu invitación →</p>
+        </div>
+      </section>
+
+      <!-- Contenido principal, oculto hasta abrir el sobre -->
+      <main class="invitation" id="invitation">
+
+        <!-- ============ SECCIÓN 2: PADRES / NOVIOS ============ -->
+        <section class="section parents">
+          <p class="eyebrow reveal">En compañía de nuestros padres</p>
+          <div class="parents-cols reveal">
+            <div class="parents-col">
+              <p>Verónica Villacreses</p>
+              <p>&amp; Pablo Poveda</p>
+            </div>
+            <div class="parents-col">
+              <p>Carol López</p>
+              <p>&amp; Marcos Calderón</p>
+            </div>
+          </div>
+
+          <div class="sprig reveal" aria-hidden="true">
+            <svg viewBox="0 0 200 40" width="160" height="32">
+              <use href="#sprig"></use>
+            </svg>
+          </div>
+
+          <h2 class="couple-names reveal">
+            Domenica Poveda <span class="amp amp--big">&amp;</span> Jhossias Calderón
+          </h2>
+          <p class="couple-date reveal">03 · 10 · 2026</p>
+        </section>
+
+        <!-- ============ SECCIÓN 3: GUARDAR FECHA ============ -->
+        <section class="section save-date">
+          <div class="card reveal">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" width="40" height="40">
+                <use href="#icon-calendar"></use>
+              </svg>
+            </div>
+            <h3>Guarda esta fecha</h3>
+            <p class="muted">Para no olvidar el día más importante</p>
+            <button class="btn btn--primary" id="addToCalendar">Añadir al Calendario</button>
+          </div>
+        </section>
+
+        <!-- ============ SECCIÓN 4: CEREMONIA ============ -->
+        <section class="section ceremony">
+          <div class="church-icon reveal" aria-hidden="true">
+            <img class="church-img" src="/iglesia.png" alt="" />
+          </div>
+          <p class="eyebrow eyebrow--light reveal">Celebra con nosotros</p>
+          <p class="ceremony-date reveal">Sábado · 03 · Octubre · 2026</p>
+          <h3 class="ceremony-place reveal">Iglesia Nuestra Señora de Fátima</h3>
+          <p class="ceremony-address reveal">Av. González Suárez 1200, Guayaquil</p>
+          <p class="ceremony-time reveal">10:30 A.M.</p>
+          <a class="btn btn--outline reveal" href="https://maps.google.com/?q=Iglesia+Nuestra+Se%C3%B1ora+de+F%C3%A1tima+Guayaquil" target="_blank" rel="noopener">Ver en Mapa</a>
+        </section>
+
+        <!-- ============ SECCIÓN 5: RECEPCIÓN ============ -->
+        <section class="section reception">
+          <div class="couple-icon reveal" aria-hidden="true">
+            <img class="couple-img" src="/pareja.jpg" alt="" />
+          </div>
+          <h2 class="eyebrow reveal">Recepción</h2>
+          <p class="reception-place reveal">Jaleo</p>
+          <p class="reception-address reveal">Km 6.5 Vía a Samborondón, Guayaquil</p>
+          <p class="reception-time reveal">12:00 P.M.</p>
+          <a class="btn btn--primary reveal" href="https://www.google.com/maps/place/Restaurante+Jaleo/data=!4m2!3m1!1s0x0:0x60c8ae3758fa52e7?sa=X&amp;ved=1t:2428&amp;ictx=111" target="_blank" rel="noopener">Ver Ubicación</a>
+        </section>
+
+        <!-- ============ SECCIÓN 6: ITINERARIO ============ -->
+        <section class="section itinerary">
+          <div class="card card--wide reveal">
+            <h2 class="eyebrow">Itinerario</h2>
+            <ul class="timeline">
+              <li class="timeline-item">
+                <div class="timeline-icon"><svg viewBox="0 0 40 40" width="26" height="26"><use href="#tl-church"></use></svg></div>
+                <div class="timeline-text">
+                  <span class="timeline-time">10:30 AM</span>
+                  <span class="timeline-label">Ceremonia Religiosa</span>
+                </div>
+              </li>
+              <li class="timeline-item">
+                <div class="timeline-icon"><svg viewBox="0 0 40 40" width="26" height="26"><use href="#tl-door"></use></svg></div>
+                <div class="timeline-text">
+                  <span class="timeline-time">12:00 PM</span>
+                  <span class="timeline-label">Llegada a Recepción</span>
+                </div>
+              </li>
+              <li class="timeline-item">
+                <div class="timeline-icon"><svg viewBox="0 0 40 40" width="26" height="26"><use href="#tl-toast"></use></svg></div>
+                <div class="timeline-text">
+                  <span class="timeline-time">12:45 PM</span>
+                  <span class="timeline-label">Cóctel de Bienvenida</span>
+                </div>
+              </li>
+              <li class="timeline-item">
+                <div class="timeline-icon"><svg viewBox="0 0 40 40" width="26" height="26"><use href="#tl-cutlery"></use></svg></div>
+                <div class="timeline-text">
+                  <span class="timeline-time">1:00 PM</span>
+                  <span class="timeline-label">Almuerzo</span>
+                </div>
+              </li>
+              <li class="timeline-item">
+                <div class="timeline-icon"><svg viewBox="0 0 40 40" width="26" height="26"><use href="#tl-champagne"></use></svg></div>
+                <div class="timeline-text">
+                  <span class="timeline-time">2:00 PM</span>
+                  <span class="timeline-label">Cocktail Hour</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- ============ SECCIÓN 7: DRESS CODE ============ -->
+        <section class="section dresscode">
+          <h2 class="eyebrow reveal">Dress Code</h2>
+          <p class="dresscode-sub reveal">Elegante de día</p>
+          <div class="dresscode-icons reveal" aria-hidden="true">
+            <svg viewBox="0 0 100 160" width="80" height="128"><use href="#icon-suit"></use></svg>
+            <svg viewBox="0 0 100 160" width="80" height="128"><use href="#icon-dress"></use></svg>
+          </div>
+          <p class="dresscode-text reveal">
+            La recepción se celebra de 12:00 PM a 6:00 PM. Te invitamos a vestir con elegancia
+            diurna: tonos tierra, champagne, ivory, sage, azul pálido o rosa polvo.
+            Los tonos blancos están reservados para la novia.
+          </p>
+        </section>
+
+        <!-- ============ SECCIÓN 8: COUNTDOWN ============ -->
+        <section class="section countdown">
+          <p class="eyebrow eyebrow--light reveal">Para nuestro gran día</p>
+          <div class="flip-row reveal" id="countdown">
+            <div class="flip-unit">
+              <div class="flip-card" data-unit="days"><span class="flip-value">00</span></div>
+              <span class="flip-caption">Días</span>
+            </div>
+            <div class="flip-unit">
+              <div class="flip-card" data-unit="hours"><span class="flip-value">00</span></div>
+              <span class="flip-caption">Horas</span>
+            </div>
+            <div class="flip-unit">
+              <div class="flip-card" data-unit="minutes"><span class="flip-value">00</span></div>
+              <span class="flip-caption">Minutos</span>
+            </div>
+            <div class="flip-unit">
+              <div class="flip-card" data-unit="seconds"><span class="flip-value">00</span></div>
+              <span class="flip-caption">Segundos</span>
+            </div>
+          </div>
+          <div class="monogram monogram--small reveal" aria-hidden="true">
+            <img class="monogram-img" src="/logo.png" alt="Monograma JD" />
+          </div>
+        </section>
+
+        <!-- ============ SECCIÓN 9: RSVP ============ -->
+        <section class="section rsvp">
+          <h2 class="eyebrow reveal">Confirmar Asistencia</h2>
+          <p class="rsvp-sub reveal">
+            Esperamos poder contar con tu presencia. Por favor confirma antes del 15 de septiembre del 2026.
+          </p>
+
+          <form class="rsvp-form reveal" id="rsvpForm">
+            <label class="field">
+              <span>Nombre</span>
+              <input type="text" name="nombre" required autocomplete="given-name" />
+            </label>
+            <label class="field">
+              <span>Apellido</span>
+              <input type="text" name="apellido" required autocomplete="family-name" />
+            </label>
+            <label class="field">
+              <span>Número de asistentes</span>
+              <select name="asistentes" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5+">5+</option>
+              </select>
+            </label>
+            <button type="submit" class="btn btn--primary">Confirmar mi Asistencia</button>
+          </form>
+
+          <div class="rsvp-success" id="rsvpSuccess" hidden>
+            <p>¡Gracias! Los esperamos con mucho amor 🤍</p>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- ============ FOOTER ============ -->
+      <footer class="footer">
+        <div class="monogram monogram--footer" aria-hidden="true">
+          <img class="monogram-img" src="/logo.png" alt="Monograma JD" />
+        </div>
+        <p class="footer-names">Domenica &amp; Jhossias · 03.10.2026</p>
+        <p class="footer-note">Con amor, desde Guayaquil</p>
+      </footer>
+
+      <!-- ============ REPRODUCTOR DE MÚSICA ============ -->
+      <div class="player" id="player" hidden>
+        <button class="player-btn" id="playerPrev" aria-label="Retroceder 10 segundos">⏮</button>
+        <button class="player-btn player-btn--main" id="playerToggle" aria-label="Reproducir o pausar">⏯</button>
+        <button class="player-btn" id="playerNext" aria-label="Adelantar 10 segundos">⏭</button>
+        <div class="player-body">
+          <span class="player-title">♪ Iris · Goo Goo Dolls</span>
+          <div class="player-bar" id="playerBar">
+            <div class="player-bar-fill" id="playerBarFill"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coloca tu archivo de audio en /public/iris.mp3 -->
+      <audio id="audio" src="/iris.mp3" preload="none" loop></audio>
+
+    </div>
+
+    <!-- ============ SPRITE SVG (símbolos reutilizables) ============ -->
+    <svg style="display:none" aria-hidden="true">
+
+      <symbol id="sprig" viewBox="0 0 200 40">
+        <path d="M2 20 C 50 5, 150 5, 198 20" fill="none" stroke="currentColor" stroke-width="1" />
+        <g stroke="currentColor" stroke-width="1" fill="none">
+          <ellipse cx="30" cy="15" rx="6" ry="3" transform="rotate(-30 30 15)" />
+          <ellipse cx="55" cy="24" rx="6" ry="3" transform="rotate(20 55 24)" />
+          <ellipse cx="80" cy="12" rx="6" ry="3" transform="rotate(-25 80 12)" />
+          <ellipse cx="100" cy="22" rx="6" ry="3" transform="rotate(15 100 22)" />
+          <ellipse cx="120" cy="12" rx="6" ry="3" transform="rotate(-20 120 12)" />
+          <ellipse cx="145" cy="24" rx="6" ry="3" transform="rotate(25 145 24)" />
+          <ellipse cx="170" cy="15" rx="6" ry="3" transform="rotate(-15 170 15)" />
+        </g>
+      </symbol>
+
+      <symbol id="icon-calendar" viewBox="0 0 48 48">
+        <rect x="6" y="10" width="36" height="32" rx="3" fill="none" stroke="currentColor" stroke-width="2" />
+        <line x1="6" y1="18" x2="42" y2="18" stroke="currentColor" stroke-width="2" />
+        <line x1="14" y1="6" x2="14" y2="14" stroke="currentColor" stroke-width="2" />
+        <line x1="34" y1="6" x2="34" y2="14" stroke="currentColor" stroke-width="2" />
+        <circle cx="16" cy="27" r="1.8" fill="currentColor" />
+        <circle cx="24" cy="27" r="1.8" fill="currentColor" />
+        <circle cx="32" cy="27" r="1.8" fill="currentColor" />
+        <circle cx="16" cy="35" r="1.8" fill="currentColor" />
+        <circle cx="24" cy="35" r="1.8" fill="currentColor" />
+      </symbol>
+
+      <symbol id="icon-suit" viewBox="0 0 100 160">
+        <path d="M50 20 L35 35 L38 45 L50 38 L62 45 L65 35 Z" fill="none" stroke="currentColor" stroke-width="1.6" />
+        <path d="M35 35 L20 55 L25 145 L75 145 L80 55 L65 35" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+        <line x1="50" y1="38" x2="46" y2="90" stroke="currentColor" stroke-width="1.4" />
+        <line x1="50" y1="38" x2="54" y2="90" stroke="currentColor" stroke-width="1.4" />
+        <circle cx="50" cy="70" r="1.4" fill="currentColor" />
+        <circle cx="50" cy="82" r="1.4" fill="currentColor" />
+      </symbol>
+
+      <symbol id="icon-dress" viewBox="0 0 100 160">
+        <circle cx="50" cy="20" r="9" fill="none" stroke="currentColor" stroke-width="1.6" />
+        <path d="M38 30 C 30 45, 20 60, 18 100 C 40 112, 60 112, 82 100 C 80 60, 70 45, 62 30 C 55 40, 45 40, 38 30 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+        <path d="M18 100 C 15 120, 20 140, 30 150" fill="none" stroke="currentColor" stroke-width="1.4" />
+        <path d="M82 100 C 85 120, 80 140, 70 150" fill="none" stroke="currentColor" stroke-width="1.4" />
+      </symbol>
+
+      <symbol id="tl-church" viewBox="0 0 40 40">
+        <line x1="20" y1="4" x2="20" y2="10" stroke="currentColor" stroke-width="2" />
+        <path d="M12 18 L20 10 L28 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+        <rect x="12" y="18" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" />
+        <rect x="17" y="24" width="6" height="10" fill="none" stroke="currentColor" stroke-width="1.5" />
+      </symbol>
+
+      <symbol id="tl-door" viewBox="0 0 40 40">
+        <path d="M10 32 L10 16 C10 10, 30 10, 30 16 L30 32" fill="none" stroke="currentColor" stroke-width="2" />
+        <line x1="6" y1="32" x2="34" y2="32" stroke="currentColor" stroke-width="2" />
+      </symbol>
+
+      <symbol id="tl-toast" viewBox="0 0 40 40">
+        <path d="M12 8 L18 22 L6 22 Z" fill="none" stroke="currentColor" stroke-width="1.6" transform="rotate(-15 12 15)" />
+        <line x1="12" y1="22" x2="12" y2="32" stroke="currentColor" stroke-width="1.6" transform="rotate(-15 12 15)" />
+        <path d="M28 8 L34 22 L22 22 Z" fill="none" stroke="currentColor" stroke-width="1.6" transform="rotate(15 28 15)" />
+        <line x1="28" y1="22" x2="28" y2="32" stroke="currentColor" stroke-width="1.6" transform="rotate(15 28 15)" />
+      </symbol>
+
+      <symbol id="tl-cutlery" viewBox="0 0 40 40">
+        <line x1="13" y1="6" x2="13" y2="34" stroke="currentColor" stroke-width="1.6" />
+        <line x1="10" y1="6" x2="10" y2="14" stroke="currentColor" stroke-width="1.6" />
+        <line x1="16" y1="6" x2="16" y2="14" stroke="currentColor" stroke-width="1.6" />
+        <path d="M27 6 C 22 10, 22 18, 27 20 L 27 34" fill="none" stroke="currentColor" stroke-width="1.6" />
+      </symbol>
+
+      <symbol id="tl-champagne" viewBox="0 0 40 40">
+        <path d="M20 6 C 14 12, 14 18, 20 22 C 26 18, 26 12, 20 6 Z" fill="none" stroke="currentColor" stroke-width="1.6" />
+        <line x1="20" y1="22" x2="20" y2="32" stroke="currentColor" stroke-width="1.6" />
+        <line x1="13" y1="32" x2="27" y2="32" stroke="currentColor" stroke-width="1.6" />
+      </symbol>
+
+    </svg>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
