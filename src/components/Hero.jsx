@@ -81,7 +81,7 @@ export default function Hero() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.3} direction="scale">
-          <img src="/logo.jpg" alt="Monograma JD" className="hero__logo" />
+          <img src="/logo.png" alt="Monograma JD" className="hero__logo" />
         </ScrollReveal>
       </div>
     </section>

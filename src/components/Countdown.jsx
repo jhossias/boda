@@ -79,7 +79,7 @@ export default function Countdown() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.2}>
-          <img src="/logo.jpg" alt="Monograma JD" className="countdown-big__logo" />
+          <img src="/logo.png" alt="Monograma JD" className="countdown-big__logo" />
         </ScrollReveal>
       </div>
     </section>

@@ -326,7 +326,7 @@ ul { list-style: none; }
   width: 100px;
   margin: 32px auto 0;
   mix-blend-mode: multiply;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 /* =========================================================
@@ -955,9 +955,9 @@ ul { list-style: none; }
 }
 
 .footer__logo {
-  width: 80px;
+  width: 100px;
   mix-blend-mode: screen;
-  opacity: 0.5;
+  opacity: 0.9;
 }
 
 .footer__names {

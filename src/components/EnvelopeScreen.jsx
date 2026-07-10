@@ -111,9 +111,15 @@ function Envelope({ opening, onOpen }) {
               transition={{ duration: 0.4 }}
             >
               <img
-                src="/logo.jpg"
-                alt="Monograma JD"
-                style={{ width: 44, mixBlendMode: 'multiply', opacity: 0.85 }}
+                src="/logo.png"
+                alt=""
+                style={{
+                  width: '48px',
+                  mixBlendMode: 'multiply',
+                  opacity: 0.9,
+                  display: 'block',
+                  margin: '0 auto',
+                }}
               />
             </motion.div>
           )}
@@ -164,7 +170,7 @@ export default function EnvelopeScreen({ onOpen }) {
             }}
           >
             <motion.img
-              src="/logo.jpg"
+              src="/logo.png"
               alt="Monograma JD"
               style={{
                 width: 130,
