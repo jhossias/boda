@@ -21,8 +21,8 @@ export default function Reception() {
         </div>
 
         <p className="eyebrow">Recepción</p>
-        <p className="venue-card__place venue-card__place--lg">Jaleo</p>
-        <p className="venue-card__address">Km 6.5 Vía a Samborondón, Guayaquil</p>
+        <p className="venue-card__place venue-card__place--lg">Restaurante Jaleo</p>
+        <p className="venue-card__address">Hotel Tryp By Wyndham</p>
         <p className="venue-card__time">12:00 P.M.</p>
 
         <motion.a

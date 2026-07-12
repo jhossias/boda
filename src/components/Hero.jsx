@@ -84,8 +84,10 @@ export default function Hero() {
 
         <ScrollReveal delay={0.25}>
           <p className="hero__quote">
-            Queremos invitarte a ser parte del día más importante y especial de nuestras vidas.
+            El amor es paciente, es bondadoso… Todo lo soporta, todo lo cree, todo lo espera,
+            todo lo persevera. El amor nunca deja de ser.
           </p>
+          <p className="hero__quote-ref">— 1 Corintios 13:4–8</p>
         </ScrollReveal>
 
         <ScrollReveal delay={0.3} direction="scale">

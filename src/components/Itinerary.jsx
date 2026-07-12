@@ -5,7 +5,7 @@ import ScrollReveal from './ScrollReveal';
 const EVENTS = [
   { img: '/it-ceremonia.png', time: '10:30 A.M.', label: 'Ceremonia Religiosa' },
   { img: '/it-llegada.png', time: '12:00 P.M.', label: 'Llegada a Recepción' },
-  { img: '/it-coctel.png', time: '12:45 P.M.', label: 'Brindis de Bienvenida' },
+  { img: '/it-coctel.png', time: '12:30 P.M.', label: 'Brindis de Bienvenida' },
   { img: '/it-almuerzo.png', time: '1:00 P.M.', label: 'Almuerzo' },
   { img: '/it-cocktail.png', time: '2:00 P.M.', label: 'Cocktail Hour' },
 ];

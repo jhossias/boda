@@ -365,6 +365,14 @@ ul { list-style: none; }
   margin: 0 auto;
 }
 
+.hero__quote-ref {
+  font-family: var(--font-body);
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--cafe);
+  margin-top: 10px;
+}
+
 .hero__couple {
   width: 150px;
   height: auto;
@@ -500,6 +508,13 @@ ul { list-style: none; }
   width: 84px;
   height: auto;
   mix-blend-mode: screen;
+}
+
+/* iglesia.jpg es apaisada (1536x1024): a un mismo ancho se ve más pequeña
+   que la ilustración casi cuadrada de recepción, así que se agranda un poco
+   para que ambas ilustraciones tengan presencia visual equivalente */
+.venue-card__medallion--church img {
+  width: 112px;
 }
 
 
@@ -728,48 +743,11 @@ ul { list-style: none; }
   margin: 0 auto 26px;
 }
 
-.dresscode__row {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
 .dresscode__illustration {
-  width: 130px;
+  width: 150px;
   height: auto;
+  margin: 0 auto 22px;
   mix-blend-mode: multiply;
-}
-
-.palette {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
-  margin-bottom: 22px;
-}
-
-.palette__item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  width: 70px;
-}
-
-.palette__swatch {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  box-shadow: 0 4px 10px rgba(60, 42, 22, 0.25);
-}
-
-.palette__name {
-  font-size: 11px;
-  color: var(--dark);
-  text-align: center;
-  line-height: 1.2;
 }
 
 .dresscode__note {

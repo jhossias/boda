@@ -3,6 +3,25 @@ import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
 import ScrollReveal from './ScrollReveal';
 
+const GOOGLE_FORM_URL =
+  'https://docs.google.com/forms/d/e/1FAIpQLScPoIEbTT75TWLIJKpL9D9gwezlf1sBkuZEEgpsAkVW1hQDkA/formResponse';
+const GOOGLE_FORM_FIELDS = {
+  nombre: 'entry.1578370436',
+  apellido: 'entry.1073821882',
+  asistentes: 'entry.690178692',
+};
+
+function sendToGoogleForm(form) {
+  const body = new FormData();
+  body.append(GOOGLE_FORM_FIELDS.nombre, form.nombre);
+  body.append(GOOGLE_FORM_FIELDS.apellido, form.apellido);
+  body.append(GOOGLE_FORM_FIELDS.asistentes, form.asistentes);
+
+  // "no-cors" no permite leer la respuesta, pero Google Forms igual registra
+  // el envío; no bloqueamos la confirmación visual si esto falla.
+  return fetch(GOOGLE_FORM_URL, { method: 'POST', mode: 'no-cors', body }).catch(() => {});
+}
+
 function FloatField({ label, name, value, onChange }) {
   const [focused, setFocused] = useState(false);
   const floated = focused || value.length > 0;
@@ -52,6 +71,8 @@ export default function Confirm() {
     existing.push({ ...form, fecha: new Date().toISOString() });
     localStorage.setItem('rsvp-domenica-jhossias', JSON.stringify(existing));
 
+    sendToGoogleForm(form);
+
     setSubmitted(true);
 
     confetti({
@@ -68,7 +89,7 @@ export default function Confirm() {
         <div className="arch-card confirm-card">
           <p className="confirm__title">RSVP</p>
           <p className="confirm__sub">Por favor, confirma tu asistencia antes del</p>
-          <p className="confirm__deadline">31 de julio del 2026.</p>
+          <p className="confirm__deadline">31 de agosto del 2026.</p>
 
           <AnimatePresence mode="wait">
             {!submitted ? (
@@ -94,7 +115,6 @@ export default function Confirm() {
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
-                    <option value="5+">5+</option>
                   </select>
                   <label
                     htmlFor="asistentes"

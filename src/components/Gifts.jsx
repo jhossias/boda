@@ -2,10 +2,9 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import ScrollReveal from './ScrollReveal';
 
-// TODO: reemplazar con los datos bancarios reales antes de compartir el link.
-const BANK_NAME = 'Banco Pichincha';
-const ACCOUNT_HOLDER = 'Domenica García';
-const ACCOUNT_NUMBER = '0000000000';
+const BANK_NAME = 'Banco Produbanco';
+const ACCOUNT_HOLDER = 'Domenica Poveda · CI 0926393372';
+const ACCOUNT_NUMBER = '18059924211';
 
 function LineDiamond() {
   return (

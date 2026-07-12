@@ -5,7 +5,7 @@ export default function Ceremony() {
   return (
     <ScrollReveal direction="scale">
       <div className="venue-card">
-        <div className="venue-card__medallion">
+        <div className="venue-card__medallion venue-card__medallion--church">
           <motion.img
             src="/iglesia.jpg"
             alt=""
@@ -33,12 +33,12 @@ export default function Ceremony() {
           </div>
         </div>
 
-        <p className="venue-card__place">Iglesia Nuestra Señora de Fátima</p>
-        <p className="venue-card__address">Av. González Suárez 1200, Guayaquil</p>
+        <p className="venue-card__place">Iglesia Padre Misericordioso</p>
+        <p className="venue-card__address">Urdenor 2, Guayaquil</p>
         <p className="venue-card__time">10:30 A.M.</p>
 
         <motion.a
-          href="https://maps.google.com/?q=Iglesia+Nuestra+Se%C3%B1ora+de+F%C3%A1tima+Guayaquil"
+          href="https://www.google.com/maps/place/Iglesia+Cat%C3%B3lica+Padre+Misericordioso+%7C+Guayaquil/data=!4m2!3m1!1s0x0:0xb95fa00c00ef0445?sa=X&ved=1t:2428&ictx=111"
           target="_blank"
           rel="noopener noreferrer"
           className="btn btn--solid"
