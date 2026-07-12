@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { MotionConfig } from 'framer-motion';
 import EnvelopeScreen from './components/EnvelopeScreen';
 import Hero from './components/Hero';
 import PersonalNote from './components/PersonalNote';
@@ -28,7 +29,7 @@ export default function App() {
   };
 
   return (
-    <>
+    <MotionConfig reducedMotion="user">
       <EnvelopeScreen onOpen={handleOpen} />
 
       {envelopeOpened && (
@@ -38,8 +39,10 @@ export default function App() {
           </div>
           <PersonalNote />
           <SaveTheDate />
-          <Ceremony />
-          <Reception />
+          <section className="venues">
+            <Ceremony />
+            <Reception />
+          </section>
           <Itinerary />
           <DressCode />
           <ArriveOnTime />
@@ -51,6 +54,6 @@ export default function App() {
       )}
 
       <MusicPlayer envelopeOpened={envelopeOpened} audioRef={audioRef} />
-    </>
+    </MotionConfig>
   );
 }

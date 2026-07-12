@@ -20,10 +20,12 @@ export default function PersonalNote() {
 
         <ScrollReveal duration={1} delay={0.1}>
           <p className="personal-note__text">
-            Hace cinco años comenzamos a escribir nuestra historia como esposos. Hoy queremos
-            dar gracias a Dios y recibir su bendición para seguir caminando juntos. Nada nos
-            haría más felices que compartir este momento con quienes han sido parte de nuestro
-            camino.
+            Hace cinco años comenzamos a escribir nuestra historia como esposos.{' '}
+            <span className="personal-note__emphasis">
+              Hoy queremos dar gracias a Dios y recibir su bendición
+            </span>{' '}
+            para seguir caminando juntos. Nada nos haría más felices que compartir este momento
+            con quienes han sido parte de nuestro camino.
           </p>
         </ScrollReveal>
 

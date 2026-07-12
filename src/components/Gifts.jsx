@@ -1,5 +1,11 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import ScrollReveal from './ScrollReveal';
+
+// TODO: reemplazar con los datos bancarios reales antes de compartir el link.
+const BANK_NAME = 'Banco Pichincha';
+const ACCOUNT_HOLDER = 'Domenica García';
+const ACCOUNT_NUMBER = '0000000000';
 
 function LineDiamond() {
   return (
@@ -12,6 +18,18 @@ function LineDiamond() {
 }
 
 export default function Gifts() {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(ACCOUNT_NUMBER);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // clipboard no disponible; no bloquear la interacción
+    }
+  };
+
   return (
     <section className="gifts">
       <div className="section-inner gifts__inner">
@@ -20,13 +38,13 @@ export default function Gifts() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.05}>
-          <p className="gifts__eyebrow">Regalos</p>
+          <p className="eyebrow gifts__eyebrow">Regalos</p>
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
           <p className="gifts__text">
-            Tu presencia es el mejor regalo. Si deseas obsequiarnos algo, puedes hacerlo a
-            través de:
+            Tu presencia es nuestro mejor regalo. Si deseas tener un detalle con nosotros,
+            puedes hacerlo mediante transferencia bancaria.
           </p>
         </ScrollReveal>
 
@@ -37,8 +55,16 @@ export default function Gifts() {
               <path d="M3 9 L14 17 L25 9" fill="none" stroke="var(--cafe)" strokeWidth="1.4" />
               <circle cx="14" cy="14" r="3.2" fill="none" stroke="var(--cafe)" strokeWidth="1.2" />
             </svg>
-            <p className="gifts__card-title">Transferencia bancaria</p>
-            <p className="gifts__card-sub">[El usuario agregará los datos bancarios aquí]</p>
+            <p className="gifts__card-title">{BANK_NAME}</p>
+            <p className="gifts__card-account">{ACCOUNT_NUMBER}</p>
+            <p className="gifts__card-sub">{ACCOUNT_HOLDER}</p>
+
+            <div className="gifts__copy-row">
+              <button type="button" className="gifts__copy-btn" onClick={handleCopy}>
+                Copiar número
+              </button>
+              {copied && <span className="gifts__copy-feedback">Copiado</span>}
+            </div>
           </motion.div>
         </ScrollReveal>
       </div>

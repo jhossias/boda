@@ -5,7 +5,7 @@ import ScrollReveal from './ScrollReveal';
 const EVENTS = [
   { img: '/it-ceremonia.png', time: '10:30 A.M.', label: 'Ceremonia Religiosa' },
   { img: '/it-llegada.png', time: '12:00 P.M.', label: 'Llegada a Recepción' },
-  { img: '/it-coctel.png', time: '12:45 P.M.', label: 'Cóctel de Bienvenida' },
+  { img: '/it-coctel.png', time: '12:45 P.M.', label: 'Brindis de Bienvenida' },
   { img: '/it-almuerzo.png', time: '1:00 P.M.', label: 'Almuerzo' },
   { img: '/it-cocktail.png', time: '2:00 P.M.', label: 'Cocktail Hour' },
 ];
@@ -29,28 +29,37 @@ export default function Itinerary() {
         ← desliza →
       </p>
 
-      <div
-        className="itinerary__track"
-        ref={trackRef}
-        onScroll={() => setShowHint(false)}
-      >
-        {EVENTS.map((ev, i) => (
-          <motion.div
-            key={ev.label}
-            className="itinerary__item"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5, delay: i * 0.15, ease: 'easeOut' }}
-          >
-            <img src={ev.img} alt={ev.label} className="itinerary__icon" />
-            <div className="itinerary__line" />
-            <div className="itinerary__dot" />
-            <div className="itinerary__line" />
-            <span className="itinerary__time">{ev.time}</span>
-            <span className="itinerary__label">{ev.label}</span>
-          </motion.div>
-        ))}
+      <div className="itinerary__scroll-area">
+        <div
+          className="itinerary__track"
+          ref={trackRef}
+          onScroll={() => setShowHint(false)}
+        >
+          {EVENTS.map((ev, i) => (
+            <motion.div
+              key={ev.label}
+              className="itinerary__item"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, delay: i * 0.15, ease: 'easeOut' }}
+            >
+              <img
+                src={ev.img}
+                alt={ev.label}
+                className="itinerary__icon"
+                width={68}
+                height={68}
+                loading="lazy"
+              />
+              <div className="itinerary__line" />
+              <div className="itinerary__dot" />
+              <div className="itinerary__line" />
+              <span className="itinerary__time">{ev.time}</span>
+              <span className="itinerary__label">{ev.label}</span>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -9,10 +9,17 @@
   --sand: #F0E6D8;
   --text: #2C2C2C;
   --muted: #9E8B7A;
+  --muted-dark: #7A6650;
 
   --font-display: 'Cormorant Garamond', serif;
   --font-body: 'Montserrat', sans-serif;
   --ease-editorial: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  /* Sistema compartido: espaciado, radios, sombras */
+  --space-section: 72px;
+  --radius-card: 20px;
+  --shadow-card: 0 16px 40px rgba(92, 68, 42, 0.12);
+  --shadow-soft: 0 10px 26px rgba(92, 68, 42, 0.1);
 }
 
 * {
@@ -44,7 +51,7 @@ ul { list-style: none; }
   max-width: 680px;
   margin: 0 auto;
   background: var(--cream);
-  overflow: hidden;
+  overflow-x: hidden;
   box-shadow: 0 0 70px rgba(0, 0, 0, 0.1);
   min-height: 100vh;
 }
@@ -75,9 +82,9 @@ ul { list-style: none; }
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.5;
+  opacity: 0.35;
   z-index: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.03 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.025 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 150px 150px;
 }
 
@@ -87,18 +94,87 @@ ul { list-style: none; }
 }
 
 /* =========================================================
-   Tipografía utilitaria compartida
+   Tipografía utilitaria compartida — títulos de sección
    ========================================================= */
 .eyebrow {
   font-family: var(--font-body);
   font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 4px;
   text-transform: uppercase;
+  color: var(--cafe);
 }
 
+.eyebrow--light {
+  color: var(--gold);
+}
+
+/* =========================================================
+   Sistema compartido de botones
+   ========================================================= */
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  padding: 0 30px;
+  border-radius: 999px;
+  border: 1.5px solid transparent;
   font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
   cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease,
+    box-shadow 0.25s ease, transform 0.15s ease;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--cafe);
+  outline-offset: 3px;
+}
+
+.btn--block {
+  width: 100%;
+}
+
+.btn--solid {
+  background: var(--cafe);
+  color: var(--cream);
+  border-color: var(--cafe);
+  box-shadow: 0 8px 20px rgba(92, 68, 42, 0.25);
+}
+.btn--solid:hover {
+  background: #7a5f3d;
+}
+
+.btn--outline-dark {
+  background: transparent;
+  color: var(--cafe);
+  border-color: var(--cafe);
+}
+.btn--outline-dark:hover {
+  background: var(--cafe);
+  color: var(--cream);
+}
+
+.btn--outline-light {
+  background: transparent;
+  color: var(--cream);
+  border-color: rgba(250, 247, 242, 0.75);
+}
+.btn--outline-light:hover {
+  background: var(--cream);
+  color: var(--brown);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn { transition: none; }
 }
 
 /* =========================================================
@@ -110,10 +186,10 @@ ul { list-style: none; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 18px;
   position: relative;
   padding: 40px 24px;
-  background: var(--dark);
+  background: var(--sand);
   overflow: hidden;
 }
 
@@ -130,52 +206,23 @@ ul { list-style: none; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   width: 100%;
 }
 
 .envelope-screen__gps {
   font-family: var(--font-body);
-  font-size: 10px;
-  letter-spacing: 6px;
-  color: var(--gold);
+  font-size: 12px;
+  letter-spacing: 5px;
+  color: var(--cafe);
 }
 
-/* Mini countdown flotante */
-.mini-countdown {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.mini-countdown__unit {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  min-width: 40px;
-}
-
-.mini-countdown__num {
-  font-family: var(--font-display);
-  font-size: 34px;
-  color: var(--cream);
-  line-height: 1;
-}
-
-.mini-countdown__label {
+.envelope-screen__date {
   font-family: var(--font-body);
-  font-size: 8px;
-  letter-spacing: 1.5px;
-  color: var(--muted);
-  text-transform: uppercase;
-}
-
-.mini-countdown__sep {
-  font-family: var(--font-display);
-  font-size: 22px;
-  color: var(--gold);
-  margin-top: -14px;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--brown);
+  margin-top: -6px;
 }
 
 /* Sobre 3D */
@@ -198,7 +245,7 @@ ul { list-style: none; }
   background: var(--cream);
   border: 1px solid rgba(212, 184, 150, 0.6);
   border-radius: 6px;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 24px 60px rgba(60, 42, 22, 0.22), 0 8px 20px rgba(60, 42, 22, 0.12);
 }
 
 .envelope__body::before,
@@ -229,7 +276,7 @@ ul { list-style: none; }
   border-right: 140px solid transparent;
   border-top: 100px solid #EFE3CE;
   background-image: linear-gradient(160deg, rgba(255, 255, 255, 0.4), transparent 60%);
-  filter: drop-shadow(0 10px 14px rgba(60, 42, 22, 0.3));
+  filter: drop-shadow(0 8px 12px rgba(92, 68, 42, 0.18));
   transform-origin: top center;
   transform-style: preserve-3d;
 }
@@ -254,11 +301,10 @@ ul { list-style: none; }
   clip-path: polygon(50% 0%, 75% 8%, 92% 28%, 98% 50%, 90% 72%, 72% 92%, 50% 100%, 28% 92%, 8% 74%, 2% 50%, 10% 26%, 28% 6%);
 }
 
-
-.envelope-hint {
-  font-family: var(--font-body);
-  font-size: 11px;
-  color: var(--gold);
+.envelope-open-btn {
+  width: 200px;
+  height: 44px;
+  margin-top: 6px;
 }
 
 /* =========================================================
@@ -266,16 +312,13 @@ ul { list-style: none; }
    ========================================================= */
 .hero {
   background: var(--cream);
-  padding: 90px 24px 70px;
+  padding: 72px 24px 32px;
   text-align: center;
   position: relative;
 }
 
 .hero__eyebrow {
-  font-size: 9px;
-  letter-spacing: 8px;
-  color: var(--muted);
-  margin: 20px 0 18px;
+  margin: 18px 0 16px;
 }
 
 .hero__names {
@@ -302,274 +345,228 @@ ul { list-style: none; }
   width: 80px;
   height: 1px;
   background: var(--gold);
-  margin: 26px auto;
+  margin: 18px auto;
 }
 
 .hero__date {
-  font-size: 11px;
-  letter-spacing: 6px;
+  font-size: 13px;
+  letter-spacing: 5px;
   color: var(--cafe);
-  margin-bottom: 26px;
+  margin-bottom: 20px;
 }
 
 .hero__quote {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 19px;
-  color: var(--muted);
+  font-size: 20px;
+  color: var(--brown);
   max-width: 300px;
-  line-height: 1.6;
+  line-height: 1.65;
   margin: 0 auto;
 }
 
-.hero__logo {
+.hero__couple {
   width: 150px;
-  margin: 18px auto 0;
+  height: auto;
+  margin: 12px auto 0;
   mix-blend-mode: multiply;
-  opacity: 0.9;
 }
 
 /* =========================================================
    CARD con arco superior (Save the Date / Dress Code / RSVP)
    ========================================================= */
 .arch-card {
-  width: 90%;
-  max-width: 380px;
+  width: 92%;
+  max-width: 420px;
   margin: 0 auto;
-  border-radius: 50% 50% 20px 20px / 26% 26% 20px 20px;
-  box-shadow: 0 25px 60px rgba(92, 68, 42, 0.16);
+  border-radius: 50% 50% 20px 20px / 22% 22% 20px 20px;
+  box-shadow: var(--shadow-card);
   text-align: center;
 }
 
 .section-pad {
-  padding: 70px 20px;
+  padding: var(--space-section) 20px;
   display: flex;
   justify-content: center;
 }
 
 /* =========================================================
-   TEXTO PERSONAL
+   TEXTO PERSONAL / HISTORIA
    ========================================================= */
 .personal-note {
   background: var(--cream);
-  padding: 80px 32px;
+  padding: 40px 32px var(--space-section);
   display: flex;
   justify-content: center;
 }
 
 .personal-note__inner {
-  max-width: 340px;
+  max-width: 320px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: 22px;
 }
 
 .personal-note__text {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 22px;
-  line-height: 1.8;
+  font-size: 21px;
+  line-height: 1.85;
   color: var(--brown);
   text-align: center;
+}
+
+.personal-note__emphasis {
+  color: var(--cafe);
+  font-weight: 600;
 }
 
 /* Save the date */
 .std-card {
   background: var(--sand);
-  padding: 56px 28px 44px;
+  padding: 56px 30px 40px;
 }
 
-.std-icon { color: var(--cafe); margin: 0 auto 18px; }
+.std-icon { color: var(--cafe); margin: 0 auto 16px; }
 
 .std-eyebrow {
-  font-size: 10px;
-  letter-spacing: 4px;
-  color: var(--cafe);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .std-title {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 22px;
+  font-size: 23px;
   color: var(--text);
-  margin-bottom: 30px;
+  margin-bottom: 18px;
 }
 
-.btn-outline-cafe {
-  width: 100%;
-  border: 1.5px solid var(--cafe);
-  color: var(--cafe);
-  background: transparent;
-  font-size: 11px;
-  letter-spacing: 2px;
-  padding: 16px;
-  border-radius: 6px;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-.btn-outline-cafe:hover {
-  background: var(--cafe);
-  color: var(--cream);
+.std-date {
+  font-family: var(--font-body);
+  font-size: 14px;
+  letter-spacing: 4px;
+  color: var(--brown);
+  font-weight: 600;
+  margin-bottom: 26px;
 }
 
 /* =========================================================
-   CEREMONIA
+   CEREMONIA + RECEPCIÓN — tarjetas unificadas
    ========================================================= */
-.ceremony {
-  background: var(--brown);
-  min-height: 100vh;
+.venues {
+  background: var(--cream);
+  padding: var(--space-section) 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 20px;
-  padding: 80px 24px;
+  gap: 28px;
+}
+
+.venue-card {
+  width: 92%;
+  max-width: 420px;
+  background: #FFFFFF;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 40px 28px 34px;
   text-align: center;
-  color: var(--cream);
-}
-
-.ceremony__eyebrow {
-  font-size: 9px;
-  letter-spacing: 8px;
-  color: var(--gold);
-}
-
-.ceremony__date-block {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
 }
 
-.ceremony__month {
-  font-size: 14px;
-  letter-spacing: 5px;
-  color: var(--cream);
+@media (min-width: 640px) {
+  .venue-card--offset {
+    margin-top: -14px;
+    margin-left: 24px;
+  }
 }
 
-.ceremony__day-row {
+.venue-card__medallion {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  background: var(--brown);
   display: flex;
   align-items: center;
-  gap: 16px;
+  justify-content: center;
+  margin-bottom: 6px;
+  box-shadow: var(--shadow-soft);
 }
 
-.ceremony__hr {
-  width: 34px;
-  height: 1px;
-  background: var(--cream);
-  opacity: 0.7;
+.venue-card__medallion img {
+  width: 84px;
+  height: auto;
+  mix-blend-mode: screen;
 }
 
-.ceremony__weekday {
-  font-family: var(--font-body);
-  font-size: 15px;
-  color: var(--cream);
-}
 
-.ceremony__num {
-  font-family: var(--font-display);
-  font-weight: 300;
-  font-size: 72px;
-  color: var(--cream);
-  line-height: 0.9;
-}
-
-.ceremony__year {
-  font-family: var(--font-body);
-  font-size: 15px;
-  color: var(--cream);
-}
-
-.ceremony__church-img {
-  width: 280px;
-}
-
-.ceremony__place {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 26px;
-  color: var(--cream);
-}
-
-.ceremony__address {
-  font-size: 13px;
-  color: var(--cream);
-  opacity: 0.85;
-}
-
-.ceremony__time {
-  font-family: var(--font-display);
-  font-size: 22px;
-  color: var(--gold);
-}
-
-.btn-outline-cream {
-  border: 1px solid var(--cream);
-  color: var(--cream);
-  background: transparent;
-  font-size: 11px;
-  letter-spacing: 2px;
-  padding: 15px 34px;
-  border-radius: 999px;
-  margin-top: 8px;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-.btn-outline-cream:hover {
-  background: var(--cream);
-  color: var(--brown);
-}
-
-/* =========================================================
-   RECEPCIÓN
-   ========================================================= */
-.reception {
-  background: var(--cream);
-  clip-path: polygon(0 40px, 100% 0, 100% 100%, 0 100%);
-  margin-top: -1px;
-  padding: 90px 24px 80px;
-  text-align: center;
+.venue-card__date-block {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.venue-card__month {
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: var(--cafe);
+}
+
+.venue-card__day-row {
+  display: flex;
   align-items: center;
   gap: 14px;
 }
 
-.reception__eyebrow {
-  font-size: 10px;
-  letter-spacing: 8px;
+.venue-card__hr {
+  width: 28px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.venue-card__weekday,
+.venue-card__year {
+  font-family: var(--font-body);
+  font-size: 14px;
   color: var(--cafe);
 }
 
-.reception__name {
+.venue-card__num {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 56px;
+  color: var(--brown);
+  line-height: 0.9;
+}
+
+.venue-card__place {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 72px;
-  color: var(--cafe);
-  text-shadow: 0 2px 20px rgba(139, 110, 71, 0.15);
-  line-height: 1;
+  font-size: 26px;
+  color: var(--brown);
 }
 
-.reception__address {
+.venue-card__place--lg {
+  font-size: 46px;
+}
+
+.venue-card__address {
   font-size: 14px;
-  color: var(--muted);
+  color: var(--muted-dark);
+  max-width: 260px;
+  line-height: 1.5;
 }
 
-.reception__time {
+.venue-card__time {
   font-family: var(--font-display);
-  font-size: 24px;
+  font-size: 22px;
   color: var(--cafe);
-}
-
-.btn-solid-cafe {
-  background: var(--cafe);
-  color: var(--cream);
-  font-size: 11px;
-  letter-spacing: 2px;
-  padding: 16px 38px;
-  border-radius: 999px;
-  box-shadow: 0 10px 24px rgba(139, 110, 71, 0.3);
-  margin-top: 8px;
+  margin-bottom: 4px;
 }
 
 /* =========================================================
@@ -577,7 +574,7 @@ ul { list-style: none; }
    ========================================================= */
 .itinerary {
   background: var(--sand);
-  padding: 80px 0 70px;
+  padding: var(--space-section) 0;
   text-align: center;
 }
 
@@ -591,10 +588,29 @@ ul { list-style: none; }
 }
 
 .itinerary__hint {
-  font-size: 9px;
-  color: var(--muted);
-  margin-bottom: 24px;
+  font-size: 11px;
+  color: var(--muted-dark);
+  margin-bottom: 22px;
   transition: opacity 0.6s ease;
+}
+
+.itinerary__scroll-area {
+  position: relative;
+}
+
+.itinerary__scroll-area::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 20px;
+  width: 36px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, var(--sand));
+}
+
+@media (min-width: 640px) {
+  .itinerary__scroll-area::after { display: none; }
 }
 
 .itinerary__track {
@@ -602,8 +618,9 @@ ul { list-style: none; }
   gap: 0;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  padding: 10px 40px 20px;
+  padding: 10px 32px 20px;
   -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
 .itinerary__track::-webkit-scrollbar { display: none; }
 
@@ -616,18 +633,19 @@ ul { list-style: none; }
 }
 
 .itinerary__item {
-  flex: 0 0 120px;
+  flex: 0 0 134px;
   scroll-snap-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   position: relative;
+  padding: 0 4px;
 }
 
 .itinerary__icon {
-  width: 64px;
-  height: 64px;
+  width: 68px;
+  height: 68px;
   object-fit: contain;
   mix-blend-mode: multiply;
   margin-bottom: 4px;
@@ -652,7 +670,7 @@ ul { list-style: none; }
   content: '';
   position: absolute;
   top: 50%;
-  width: 60px;
+  width: 67px;
   height: 1px;
   background: var(--cafe);
   transform: translateY(-50%);
@@ -664,22 +682,27 @@ ul { list-style: none; }
 
 .itinerary__time {
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: 21px;
   color: var(--cafe);
-  margin-top: 8px;
+  margin-top: 10px;
 }
 
 .itinerary__label {
-  font-size: 9px;
-  letter-spacing: 2px;
-  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--muted-dark);
   text-transform: uppercase;
   margin-top: 2px;
+  line-height: 1.3;
 }
 
 /* =========================================================
    DRESS CODE
    ========================================================= */
+.dresscode {
+  background-color: var(--cream);
+}
+
 .dresscode-card {
   background: var(--gold);
   padding: 48px 32px 40px;
@@ -687,16 +710,14 @@ ul { list-style: none; }
 
 .dresscode__title {
   font-family: var(--font-display);
-  font-size: 28px;
-  letter-spacing: 4px;
+  font-style: italic;
+  font-size: 30px;
   color: var(--dark);
 }
 
 .dresscode__sub {
-  font-size: 11px;
-  letter-spacing: 4px;
+  margin: 10px 0 20px;
   color: var(--brown);
-  margin: 8px 0 20px;
 }
 
 .dresscode__rule {
@@ -710,9 +731,15 @@ ul { list-style: none; }
 .dresscode__row {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 22px;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.dresscode__illustration {
+  width: 130px;
+  height: auto;
+  mix-blend-mode: multiply;
 }
 
 .palette {
@@ -728,18 +755,18 @@ ul { list-style: none; }
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  width: 66px;
+  width: 70px;
 }
 
 .palette__swatch {
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   box-shadow: 0 4px 10px rgba(60, 42, 22, 0.25);
 }
 
 .palette__name {
-  font-size: 8px;
+  font-size: 11px;
   color: var(--dark);
   text-align: center;
   line-height: 1.2;
@@ -748,21 +775,24 @@ ul { list-style: none; }
 .dresscode__note {
   font-family: var(--font-body);
   font-style: italic;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--dark);
   text-align: center;
+  max-width: 280px;
+  margin: 0 auto;
+  line-height: 1.5;
 }
 
 /* =========================================================
-   LLEGA A TIEMPO
+   PUNTUALIDAD
    ========================================================= */
-.arrive-card {
+.punctuality-card {
   background: var(--gold);
-  border-radius: 20px;
+  border-radius: var(--radius-card);
   padding: 32px 28px;
   max-width: 340px;
   margin: 0 auto;
-  box-shadow: 0 16px 40px rgba(92, 68, 42, 0.14);
+  box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -770,21 +800,22 @@ ul { list-style: none; }
   text-align: center;
 }
 
-.arrive-card svg { margin: 0 auto; }
+.punctuality-card svg { margin: 0 auto; }
 
-.arrive-card__title {
+.punctuality-card__title {
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 4px;
   color: var(--dark);
 }
 
-.arrive-card__text {
+.punctuality-card__text {
   font-family: var(--font-display);
   font-style: italic;
   font-size: 19px;
   color: var(--brown);
   text-align: center;
+  line-height: 1.6;
 }
 
 /* =========================================================
@@ -792,7 +823,7 @@ ul { list-style: none; }
    ========================================================= */
 .gifts {
   background: var(--cream);
-  padding: 80px 32px;
+  padding: var(--space-section) 32px;
   display: flex;
   justify-content: center;
 }
@@ -807,71 +838,118 @@ ul { list-style: none; }
 }
 
 .gifts__eyebrow {
-  font-family: var(--font-body);
-  font-size: 10px;
-  letter-spacing: 6px;
   color: var(--cafe);
-  text-transform: uppercase;
 }
 
 .gifts__text {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 22px;
+  font-size: 21px;
   color: var(--brown);
-  max-width: 320px;
+  max-width: 300px;
+  line-height: 1.6;
 }
 
 .gifts__card {
   background: #FFFFFF;
   border-radius: 16px;
-  box-shadow: 0 12px 30px rgba(107, 82, 53, 0.12);
-  padding: 24px;
+  box-shadow: var(--shadow-card);
+  padding: 26px 24px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .gifts__card-title {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text);
+  font-weight: 500;
+}
+
+.gifts__card-account {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--brown);
+  letter-spacing: 1px;
 }
 
 .gifts__card-sub {
-  font-family: var(--font-display);
-  font-size: 16px;
-  color: var(--muted);
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--muted-dark);
+}
+
+.gifts__copy-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.gifts__copy-btn {
+  font-family: var(--font-body);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--cafe);
+  border: 1px solid var(--cafe);
+  border-radius: 999px;
+  padding: 7px 16px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.gifts__copy-btn:hover {
+  background: var(--cafe);
+  color: var(--cream);
+}
+
+.gifts__copy-feedback {
+  font-size: 11px;
+  color: var(--cafe);
+  font-weight: 600;
 }
 
 /* =========================================================
    COUNTDOWN GRANDE
    ========================================================= */
 .countdown-big {
-  background: var(--dark);
-  min-height: 80vh;
+  background: var(--brown);
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 18px;
-  padding: 70px 20px;
+  padding: 64px 20px;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.countdown-big__watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 420px;
+  height: auto;
+  transform: translate(-50%, -50%);
+  opacity: 0.07;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .countdown-big__title {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 48px;
+  font-size: 46px;
   color: var(--cream);
 }
 
 .countdown-big__sub {
-  font-size: 10px;
-  letter-spacing: 6px;
-  color: var(--gold);
+  letter-spacing: 5px;
 }
 
 .countdown-big__row {
@@ -903,26 +981,19 @@ ul { list-style: none; }
 }
 
 .countdown-big__label {
-  font-size: 8px;
-  letter-spacing: 5px;
-  color: #D4B896;
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--gold);
   text-transform: uppercase;
 }
 
 .countdown-big__sep {
   font-family: var(--font-display);
-  font-size: 60px;
+  font-size: 56px;
   color: var(--gold);
   opacity: 0.6;
   align-self: center;
   margin-top: -20px;
-}
-
-.countdown-big__logo {
-  width: 80px;
-  mix-blend-mode: screen;
-  opacity: 0.35;
-  margin-top: 10px;
 }
 
 /* =========================================================
@@ -935,20 +1006,21 @@ ul { list-style: none; }
 
 .confirm__title {
   font-family: var(--font-display);
-  font-size: 42px;
-  letter-spacing: 8px;
+  font-size: 40px;
+  letter-spacing: 6px;
   color: var(--text);
 }
 
 .confirm__sub {
-  font-size: 10px;
-  letter-spacing: 3px;
-  color: var(--muted);
-  margin: 18px 0 4px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--muted-dark);
+  margin: 16px 0 4px;
+  line-height: 1.5;
 }
 
 .confirm__deadline {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--cafe);
   margin-bottom: 30px;
@@ -957,7 +1029,7 @@ ul { list-style: none; }
 .confirm-form {
   display: flex;
   flex-direction: column;
-  gap: 26px;
+  gap: 24px;
   text-align: left;
 }
 
@@ -969,12 +1041,12 @@ ul { list-style: none; }
 .float-field select {
   width: 100%;
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 19px;
   color: var(--text);
   background: transparent;
   border: none;
   border-bottom: 1.5px solid var(--cafe);
-  padding: 8px 2px;
+  padding: 14px 2px 12px;
   outline: none;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   appearance: none;
@@ -984,6 +1056,10 @@ ul { list-style: none; }
 .float-field select:focus {
   border-bottom-color: var(--gold);
   box-shadow: 0 4px 10px -6px rgba(139, 110, 71, 0.7);
+}
+
+.float-field input:invalid:not(:placeholder-shown) {
+  border-bottom-color: #B3564A;
 }
 
 .float-field select {
@@ -1000,26 +1076,13 @@ ul { list-style: none; }
   left: 2px;
   pointer-events: none;
   font-family: var(--font-body);
-  color: var(--muted);
-}
-
-.confirm__submit {
-  width: 100%;
-  background: #8B6E47;
-  color: var(--cream);
-  padding: 16px;
-  border-radius: 50px;
-  font-family: var(--font-body);
-  font-size: 11px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-top: 6px;
+  color: var(--muted-dark);
 }
 
 .confirm__success {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 28px;
+  font-size: 27px;
   color: var(--brown);
   text-align: center;
 }
@@ -1030,17 +1093,27 @@ ul { list-style: none; }
 .footer {
   background: var(--dark);
   text-align: center;
-  padding: 44px 24px 120px;
+  padding: 56px 24px 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .footer__logo {
-  width: 110px;
+  width: 100px;
+  height: auto;
   mix-blend-mode: screen;
   opacity: 0.9;
+  margin-bottom: 4px;
+}
+
+.footer__thanks {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 19px;
+  color: var(--cream);
+  margin-bottom: 6px;
 }
 
 .footer__names {
@@ -1051,85 +1124,45 @@ ul { list-style: none; }
 }
 
 .footer__date {
-  font-size: 10px;
+  font-size: 12px;
+  letter-spacing: 2px;
   color: var(--gold);
-}
-
-.footer__note {
-  font-size: 9px;
-  letter-spacing: 4px;
-  color: var(--muted);
-  text-transform: uppercase;
 }
 
 /* =========================================================
-   MUSIC PLAYER
+   REPRODUCTOR — botón circular flotante
    ========================================================= */
-.player {
+.player-fab {
   position: fixed;
-  left: 50%;
-  bottom: 20px;
+  right: 18px;
+  bottom: calc(18px + env(safe-area-inset-bottom));
   z-index: 1000;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 20px;
-  border-radius: 999px;
-  background: rgba(61, 43, 26, 0.9);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(212, 184, 150, 0.2);
-  max-width: calc(100% - 32px);
-}
-
-.player__btn {
-  color: var(--gold);
-  width: 26px;
-  height: 26px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--cafe);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  transition: background 0.25s ease;
-}
-.player__btn:hover { background: rgba(255, 255, 255, 0.1); }
-
-.player__body {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  min-width: 90px;
+  box-shadow: 0 8px 24px rgba(60, 42, 22, 0.3);
+  border: 1px solid rgba(139, 110, 71, 0.15);
 }
 
-.player__title {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 10px;
+.player-fab__tooltip {
+  position: fixed;
+  right: 68px;
+  bottom: calc(24px + env(safe-area-inset-bottom));
+  z-index: 1000;
+  background: rgba(61, 43, 26, 0.92);
   color: var(--cream);
-  opacity: 0.8;
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  padding: 8px 14px;
+  border-radius: 999px;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.player__bar {
-  width: 60px;
-  height: 2px;
-  border-radius: 999px;
-  background: rgba(212, 184, 150, 0.2);
-  cursor: pointer;
-  position: relative;
-}
-
-.player__bar-fill {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  border-radius: 999px;
-  background: var(--gold);
-  width: 0%;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
 }
 
 /* =========================================================

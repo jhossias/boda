@@ -1,7 +1,9 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import ScrollReveal from './ScrollReveal';
 
 function AnimatedWord({ text, startIndex, className }) {
+  const reduceMotion = useReducedMotion();
+
   return (
     <span style={{ display: 'inline-flex' }}>
       {[...text].map((ch, i) => (
@@ -9,9 +11,13 @@ function AnimatedWord({ text, startIndex, className }) {
           key={i}
           className={className}
           style={{ display: 'inline-block', whiteSpace: 'pre' }}
-          initial={{ opacity: 0, y: 20 }}
+          initial={reduceMotion ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: 'easeOut', delay: (startIndex + i) * 0.03 }}
+          transition={
+            reduceMotion
+              ? { duration: 0 }
+              : { duration: 0.5, ease: 'easeOut', delay: (startIndex + i) * 0.03 }
+          }
         >
           {ch}
         </motion.span>
@@ -21,6 +27,8 @@ function AnimatedWord({ text, startIndex, className }) {
 }
 
 function BranchDivider() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <svg viewBox="0 0 200 30" width="200" height="30" aria-hidden="true">
       <motion.path
@@ -28,7 +36,7 @@ function BranchDivider() {
         fill="none"
         stroke="#8B6E47"
         strokeWidth="1"
-        initial={{ pathLength: 0 }}
+        initial={{ pathLength: reduceMotion ? 1 : 0 }}
         animate={{ pathLength: 1 }}
         transition={{ duration: 1.5, ease: 'easeInOut' }}
       />
@@ -37,7 +45,7 @@ function BranchDivider() {
         fill="none"
         stroke="#8B6E47"
         strokeWidth="1"
-        initial={{ pathLength: 0 }}
+        initial={{ pathLength: reduceMotion ? 1 : 0 }}
         animate={{ pathLength: 1 }}
         transition={{ duration: 1.5, ease: 'easeInOut' }}
       />
@@ -47,9 +55,9 @@ function BranchDivider() {
 }
 
 export default function Hero() {
-  const first = 'Jhossias';
+  const first = 'Domenica';
   const amp = ' & ';
-  const second = 'Domenica';
+  const second = 'Jhossias';
 
   return (
     <section className="hero texture-paper">
@@ -59,7 +67,7 @@ export default function Hero() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
-          <p className="hero__eyebrow">Nos casamos</p>
+          <p className="eyebrow hero__eyebrow">Nos casamos</p>
         </ScrollReveal>
 
         <h1 className="hero__names">
@@ -81,7 +89,15 @@ export default function Hero() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.3} direction="scale">
-          <img src="/logo.png" alt="Monograma JD" className="hero__logo" />
+          <img
+            src="/por-pareja.png"
+            alt=""
+            aria-hidden="true"
+            className="hero__couple"
+            width={1024}
+            height={1024}
+            loading="lazy"
+          />
         </ScrollReveal>
       </div>
     </section>

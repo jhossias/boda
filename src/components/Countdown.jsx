@@ -52,6 +52,16 @@ export default function Countdown() {
 
   return (
     <section className="countdown-big texture-linen">
+      <img
+        src="/logo.png"
+        alt=""
+        aria-hidden="true"
+        className="countdown-big__watermark"
+        width={1024}
+        height={1024}
+        loading="lazy"
+      />
+
       <div className="section-inner" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14 }}>
         <motion.p
           className="countdown-big__title"
@@ -64,7 +74,7 @@ export default function Countdown() {
         </motion.p>
 
         <ScrollReveal delay={0.1}>
-          <p className="countdown-big__sub">Nos vemos dentro de</p>
+          <p className="eyebrow eyebrow--light countdown-big__sub">Nos vemos dentro de</p>
         </ScrollReveal>
 
         <ScrollReveal delay={0.15}>
@@ -76,10 +86,6 @@ export default function Countdown() {
               </div>
             ))}
           </div>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.2}>
-          <img src="/logo.png" alt="Monograma JD" className="countdown-big__logo" />
         </ScrollReveal>
       </div>
     </section>

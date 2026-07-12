@@ -68,7 +68,7 @@ export default function Confirm() {
         <div className="arch-card confirm-card">
           <p className="confirm__title">RSVP</p>
           <p className="confirm__sub">Por favor, confirma tu asistencia antes del</p>
-          <p className="confirm__deadline">15 de septiembre del 2026.</p>
+          <p className="confirm__deadline">31 de julio del 2026.</p>
 
           <AnimatePresence mode="wait">
             {!submitted ? (
@@ -106,8 +106,8 @@ export default function Confirm() {
 
                 <motion.button
                   type="submit"
-                  className="confirm__submit"
-                  whileHover={{ scale: 1.03 }}
+                  className="btn btn--solid btn--block"
+                  whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.97 }}
                 >
                   Confirmar Asistencia

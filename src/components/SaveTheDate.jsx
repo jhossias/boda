@@ -54,12 +54,13 @@ export default function SaveTheDate() {
             </svg>
           </motion.div>
 
-          <p className="std-eyebrow eyebrow">Guarda esta fecha</p>
+          <p className="eyebrow std-eyebrow">Guarda esta fecha</p>
           <p className="std-title">Para no olvidar el día más importante</p>
+          <p className="std-date">03 · 10 · 2026</p>
 
           <motion.button
             type="button"
-            className="btn-outline-cafe"
+            className="btn btn--outline-dark btn--block"
             onClick={downloadIcs}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
