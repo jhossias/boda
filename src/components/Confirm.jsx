@@ -6,9 +6,9 @@ import ScrollReveal from './ScrollReveal';
 const GOOGLE_FORM_URL =
   'https://docs.google.com/forms/d/e/1FAIpQLScPoIEbTT75TWLIJKpL9D9gwezlf1sBkuZEEgpsAkVW1hQDkA/formResponse';
 const GOOGLE_FORM_FIELDS = {
-  nombre: 'entry.1578370436',
-  apellido: 'entry.1073821882',
-  asistentes: 'entry.690178692',
+  nombre: 'entry.1591542540',
+  apellido: 'entry.36782216',
+  asistentes: 'entry.1051891998',
 };
 
 function sendToGoogleForm(form) {
